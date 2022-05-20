@@ -2,6 +2,7 @@
   "name": "@zerologin/lnurl",
   "version": "0.0.1",
   "description": "LNURL library written in TS",
+  "private": false,
   "scripts": {
     "dev": "ts-node ./src/index.ts",
     "build": "tsc",
