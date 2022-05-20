@@ -1,15 +1,20 @@
 {
-  "compilerOptions": {                        
-    "target": "esnext",                               
-    "module": "commonjs",                           
-    "outDir": "dist",                             
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "outDir": "dist",
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "noImplicitAny": true,
-    "preserveConstEnums": true                      
+    "preserveConstEnums": true,
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true,
+    "isolatedModules": false,
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": true,
   },
-  "exclude":[
+  "exclude": [
     "./node_modules",
     "./tests",
     "./bin"
