@@ -1,15 +1,18 @@
 {
   "compilerOptions": {                        
-    "target": "es6",                               
+    "target": "esnext",                               
     "module": "commonjs",                           
-    "outDir": "./dist",                             
-    "rootDir": "./src",                             
+    "outDir": "dist",                             
     "strict": true,
     "moduleResolution": "node",
-    "esModuleInterop": true,                       
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "preserveConstEnums": true                      
   },
   "exclude":[
-    "./node_modules"
+    "./node_modules",
+    "./tests",
+    "./bin"
   ],
   "ts-node": {
     "transpileOnly": true
