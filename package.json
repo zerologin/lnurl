@@ -1,6 +1,6 @@
 {
   "name": "@zerologin/lnurl",
-  "version": "0.0.5",
+  "version": "0.0.9",
   "description": "LNURL library written in TS",
   "private": false,
   "type": "module",

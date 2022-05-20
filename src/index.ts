@@ -13,4 +13,4 @@ const encode = (unencoded: string): string => {
   return bech32.encode(prefix, words, limit).toUpperCase();
 };
 
-export default { decode, encode };
+export { decode, encode };
