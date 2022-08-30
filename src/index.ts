@@ -1,11 +1,30 @@
 import { bech32 } from "bech32";
+import { getLnurlObject, getRootDomain } from "./utils.js";
 
 const limit = 1023;
 const prefix = "lnurl";
 
-const decode = (lnurl: string): string => {
+interface LnurlDecoded {
+  decoded: string,
+  domain: string,
+  tag: string,
+  k1: string,
+  action: string,
+}
+
+const decode = (lnurl: string): LnurlDecoded => {
   const decoded = bech32.decode(lnurl, limit);
-  return Buffer.from(bech32.fromWords(decoded.words)).toString("utf8");
+  const decodedString = Buffer.from(bech32.fromWords(decoded.words)).toString("utf8");
+
+  const split = decodedString.split('?')
+  if (split.length !== 2) {
+    throw new Error(`Cannot decode LNURL string ('${lnurl}')`);
+  }
+
+  const url = split[0]
+  const domain = getRootDomain(url)
+  const lnurlObject = new URLSearchParams(split[1])
+  return { decoded: decodedString, domain, tag: getLnurlObject(lnurlObject, "tag"), k1: getLnurlObject(lnurlObject, "k1"), action: getLnurlObject(lnurlObject, "action") };
 };
 
 const encode = (unencoded: string): string => {
