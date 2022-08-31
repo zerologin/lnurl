@@ -13,6 +13,11 @@ interface LnurlDecoded {
 }
 
 const decode = (lnurl: string): LnurlDecoded => {
+  const protocol = 'lightning:'
+  if (lnurl.toLowerCase().includes(protocol)) {
+    lnurl = lnurl.toLowerCase().split('lightning:')[1]
+  }
+  
   const decoded = bech32.decode(lnurl, limit);
   const decodedString = Buffer.from(bech32.fromWords(decoded.words)).toString("utf8");
 
